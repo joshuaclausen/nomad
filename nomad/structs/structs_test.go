@@ -2291,17 +2291,18 @@ func TestTemplate_Validate(t *testing.T) {
 				"specify signal value",
 			},
 		},
-		{
-			Tmpl: &Template{
-				SourcePath: "foo",
-				DestPath:   "../../root",
-				ChangeMode: "noop",
-			},
-			Fail: true,
-			ContainsErrs: []string{
-				"destination escapes",
-			},
-		},
+		// Disable this test, since we want to be able to break out of the alloc path
+		// {
+		// 	Tmpl: &Template{
+		// 		SourcePath: "foo",
+		// 		DestPath:   "../../root",
+		// 		ChangeMode: "noop",
+		// 	},
+		// 	Fail: true,
+		// 	ContainsErrs: []string{
+		// 		"destination escapes",
+		// 	},
+		// },
 		{
 			Tmpl: &Template{
 				SourcePath: "foo",
@@ -3624,10 +3625,11 @@ func TestTaskArtifact_Validate_Dest(t *testing.T) {
 		t.Fatalf("unexpected error: %v", err)
 	}
 
-	valid.RelativeDest = "local/../../.."
-	if err := valid.Validate(); err == nil {
-		t.Fatalf("expected error: %v", err)
-	}
+	// Disable this test, since we want to be able to break out of the alloc path
+	// valid.RelativeDest = "local/../../.."
+	// if err := valid.Validate(); err == nil {
+	// 	t.Fatalf("expected error: %v", err)
+	// }
 }
 
 // TestTaskArtifact_Hash asserts an artifact's hash changes when any of the
@@ -4945,11 +4947,12 @@ func TestDispatchPayloadConfig_Validate(t *testing.T) {
 		t.Fatalf("bad: %v", err)
 	}
 
-	// ../haha
-	d.File = "../../../haha"
-	if err := d.Validate(); err == nil {
-		t.Fatalf("bad: %v", err)
-	}
+	// Disable this test, since we want to be able to break out of the alloc path
+	// // ../haha
+	// d.File = "../../../haha"
+	// if err := d.Validate(); err == nil {
+	// 	t.Fatalf("bad: %v", err)
+	// }
 }
 
 func TestScalingPolicy_Canonicalize(t *testing.T) {
