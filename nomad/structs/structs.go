@@ -4949,7 +4949,7 @@ func (d *DispatchPayloadConfig) Validate() error {
 	if err != nil {
 		return fmt.Errorf("invalid destination path: %v", err)
 	} else if escaped {
-		return fmt.Errorf("destination escapes allocation directory")
+		//return fmt.Errorf("destination escapes allocation directory")
 	}
 
 	return nil
@@ -7080,7 +7080,7 @@ func (t *Template) Validate() error {
 	if err != nil {
 		mErr.Errors = append(mErr.Errors, fmt.Errorf("invalid destination path: %v", err))
 	} else if escaped {
-		mErr.Errors = append(mErr.Errors, fmt.Errorf("destination escapes allocation directory"))
+		//mErr.Errors = append(mErr.Errors, fmt.Errorf("destination escapes allocation directory"))
 	}
 
 	// Verify a proper change mode
@@ -7796,7 +7796,7 @@ func (ta *TaskArtifact) Validate() error {
 	if err != nil {
 		mErr.Errors = append(mErr.Errors, fmt.Errorf("invalid destination path: %v", err))
 	} else if escaped {
-		mErr.Errors = append(mErr.Errors, fmt.Errorf("destination escapes allocation directory"))
+		//mErr.Errors = append(mErr.Errors, fmt.Errorf("destination escapes allocation directory"))
 	}
 
 	if err := ta.validateChecksum(); err != nil {
